@@ -10,13 +10,7 @@ public String getHomeAddress() {
 		public void setHomeAddress(String homeAddress) {
 			this.homeAddress = homeAddress;
 		}
-		public String getStudent() {
-			return student;
-		}
-		public void setStudent(String student) {
-			this.student = student;
-		}
-private String student;
+		
 
 	}
 

@@ -1,5 +1,6 @@
 package com.mvc.address;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -12,39 +13,37 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/addresses")
 public class AddressController {
 
-	   
-	    private final AddressService adrService;
+	  
+    private final AddressService adrservice;
 
-	    public AddressController(AddressService adrService) {
-	        this.adrService = adrService;
-	    }
+    public AddressController(AddressService adrservice) {
+        this.adrservice = adrservice;
+    }
 
-	    @PostMapping
-	    public ResponseEntity<Void> save(
-	            @RequestBody @Valid AddressRequest adr
-	    ) {
-	        adrService.save(adr);
-	        return ResponseEntity
-	                .accepted()
-	                .build();
-	    }
+    @PostMapping
+    public ResponseEntity<Void> save(
+            @RequestBody @Valid AddressRequest address) {
+        adrservice.save(address);
+        return ResponseEntity
+                .accepted()
+                .build();
+    }
 
-	    @GetMapping("/{adress-id}")
-	    public ResponseEntity<AddressResponse> findById(
-	            @PathVariable("address-id") Integer addressId
-	    ) {
-	        return ResponseEntity.ok(adrService.findById(addressId));
-	    }
+    @GetMapping("/{address-id}")
+    public ResponseEntity<AddressResponse> findById(
+            @PathVariable("address-id") Integer addressId
+    ) {
+        return ResponseEntity.ok(adrservice.findById(addressId));
+    }
 
-	    @GetMapping
-	    public ResponseEntity<List<AddressResponse>> findAll() {
-	        return ResponseEntity.ok(adrService.findAll());
-	    }
+    @GetMapping
+    public ResponseEntity<List<AddressResponse>> findAll() {
+        return ResponseEntity.ok(adrservice.findAll());
+    }
 
-	}
+}

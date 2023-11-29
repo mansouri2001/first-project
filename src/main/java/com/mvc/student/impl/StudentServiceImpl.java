@@ -23,10 +23,18 @@ import java.util.stream.Collectors;
 
 public class StudentServiceImpl implements StudentService {
 
-    private final StudentRepository studentRepository = null;
-    private final StudentMapper studentmapper = new StudentMapper();
+    private final StudentRepository studentRepository ;
+    private final StudentMapper studentmapper ;
 
-    @Override
+    
+    
+    		public StudentServiceImpl(StudentRepository studentRepository, StudentMapper studentmapper) {
+		super();
+		this.studentRepository = studentRepository;
+		this.studentmapper = studentmapper;
+	}
+
+	@Override
     public void save(StudentRequest s) {
         Student student = studentmapper.toStudent(s);
         this.studentRepository.save(student);

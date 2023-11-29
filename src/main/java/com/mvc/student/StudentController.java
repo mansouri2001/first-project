@@ -1,6 +1,6 @@
 package com.mvc.student;
 
-import jakarta.persistence.EntityNotFoundException;
+
 import jakarta.validation.Valid;
 
 import java.util.List;
@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mvc.student.StudentRequest;
-import com.mvc.student.StudentResponse;
-import com.mvc.student.StudentService;
+
 
 
 

@@ -2,8 +2,9 @@
 
 package com.mvc.address;
 
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class AddressMapper {
 	 public AddressResponse toAddressDto(Address adr) {
     	var addrresponse = new AddressResponse();
@@ -22,3 +23,4 @@ public class AddressMapper {
         return address;
     }
 }
+

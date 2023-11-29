@@ -3,24 +3,34 @@ package com.mvc.address.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.mvc.address.Address;
 import com.mvc.address.AddressMapper;
 import com.mvc.address.AddressRepository;
 import com.mvc.address.AddressRequest;
 import com.mvc.address.AddressResponse;
 import com.mvc.address.AddressService;
-import com.mvc.student.Student;
-import com.mvc.student.StudentMapper;
-import com.mvc.student.StudentRepository;
-import com.mvc.student.StudentRequest;
-import com.mvc.student.StudentResponse;
+
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+@Builder
 
 public class AddressServiceImpl implements AddressService {
 
-	  private final AddressRepository addressRepository = null;
-	    private final AddressMapper addressmapper = new AddressMapper();
+	  private final AddressRepository addressRepository ;
+	    private final AddressMapper addressmapper ;
 
-	    @Override
+	    public AddressServiceImpl(AddressRepository addressRepository, AddressMapper addressmapper) {
+			super();
+			this.addressRepository = addressRepository;
+			this.addressmapper = addressmapper;
+		}
+
+		@Override
 	    public void save(AddressRequest s) {
 	        Address address =addressmapper.toAddress(s);
 	        this.addressRepository.save(address);
@@ -46,3 +56,4 @@ public class AddressServiceImpl implements AddressService {
 	        this.addressRepository.deleteById(id);
 	    }
 	}
+	

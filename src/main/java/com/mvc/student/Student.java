@@ -76,6 +76,6 @@ public class Student {
             joinColumns = {@JoinColumn(name = "std_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "sub_id", referencedColumnName = "id")}
     )
-    // @JsonManagedReference
+     @JsonManagedReference
     private List<Subject> subjects;
 }
